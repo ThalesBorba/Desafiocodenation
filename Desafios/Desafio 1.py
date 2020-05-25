@@ -34,10 +34,15 @@ records = [
 # Botando na ordem do maior telefone para o menor
 sort = sorted(records, key=lambda k: k['source'], reverse=True)
 
-sort.append({'source': '0', 'destination': '48-666666666',
-             'end': 1564610974, 'start': 1564610674})
+"""sort.append({'source': '0', 'destination': '48-666666666',
+            'end': 1564610974, 'start': 1564610674})
+"""
+def calcula_tarifa(taxa, duracao):
+    return taxa + int(duracao / 60) * 0.09
 
-for c in range(len(sort) - 1):
+numeroTarifaDicionario = {}
+
+for c in range(len(sort)):
     # Transformando epoch em data
     inicio = datetime.datetime.fromtimestamp(sort[c]['start'])
     # Transformando data em minutos
@@ -57,6 +62,17 @@ for c in range(len(sort) - 1):
     # Cria entrada para o número
     tarifas.append(f'{taxa + int(duracao / 60) * 0.09:.2f}')
     # Juntando os números iguais e somando respectivas taxas
+    numeroAtual = sort[c]['source']
+
+    if numeroAtual not in numeroTarifaDicionario:
+        numeroTarifaDicionario[numeroAtual] = calcula_tarifa(taxa, duracao)
+    else:
+        tarifaAntiga = numeroTarifaDicionario[numeroAtual]
+        tarifaNova = calcula_tarifa(taxa, duracao)
+        tarifaTotal = tarifaAntiga + tarifaNova
+        numeroTarifaDicionario[numeroAtual] = tarifaTotal
+
+""" 
     if sort[c]['source'] == sort[c + 1]['source']:
         total += float(tarifas[c])
     else:
@@ -64,7 +80,14 @@ for c in range(len(sort) - 1):
         temp['source'] = sort[c]['source']
         temp['total'] = float(f'{total:.2f}')
         final.append(temp.copy())
-        total = 0
+        total = 0 ggghgfhfghf
+"""
+
+
+print(numeroTarifaDicionario)
+
+
+
 
 
 def classify_by_phone_number():

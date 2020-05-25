@@ -1,1 +1,0 @@
-{'numero_casas': 1, 'token': '66b7eed582eedd6e38547a910d4f8b1950be14ca', 'cifrado': 'zpv dbo tuboe po uif tipvmefst pg hjbout ps b cjh fopvhi qjmf pg exbsgt, xpslt fjuifs xbz. volopxo', 'decifrado': '', 'resumo_criptografico': ''}
